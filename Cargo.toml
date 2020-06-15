@@ -1,6 +1,6 @@
 [package]
 name = 'correct'
-version = '0.1.0'
+version = '0.1.1'
 authors = ['AlseinX <xyh951115@live.com>']
 license = 'MIT'
 description = 'A number wrapper that has correct bitwise shift behaviors rather than the primitives in rust language.'

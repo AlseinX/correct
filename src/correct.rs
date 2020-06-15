@@ -1,7 +1,7 @@
 use crate::{num::Num, num::SignedNum};
 use std::fmt::Debug;
 use std::fmt::Display;
-use std::ops::*;
+use std::{mem::size_of, ops::*};
 
 #[derive(Copy, Clone, Eq)]
 pub struct Correct<T: Num>(pub T);
@@ -89,7 +89,7 @@ macro_rules! correct_shs_types_impl {
         impl<T: Num> Shl<$t> for Correct<T> {
             type Output = Self;
             fn shl(self, rhs: $t) -> Self::Output {
-                if rhs >= 8 {
+                if rhs >= (size_of::<T>() * 8) as $t {
                     Self(T::zero())
                 } else {
                     Self(self.0.overflowing_shl(rhs as u32))
@@ -100,7 +100,7 @@ macro_rules! correct_shs_types_impl {
         impl<T: Num> Shr<$t> for Correct<T> {
             type Output = Self;
             fn shr(self, rhs: $t) -> Self::Output {
-                if rhs >= 8 {
+                if rhs >= (size_of::<T>() * 8) as $t {
                     Self(T::zero())
                 } else {
                     Self(self.0.overflowing_shr(rhs as u32))
