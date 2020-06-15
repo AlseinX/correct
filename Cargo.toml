@@ -6,7 +6,7 @@ license = 'MIT'
 description = 'A number wrapper that has correct bitwise shift behaviors rather than the primitives in rust language.'
 homepage = 'https://github.com/AlseinX/correct'
 repository = 'https://github.com/AlseinX/correct'
-readme = 'READEME.md'
+readme = 'README.md'
 edition = '2018'
 
 [dependencies]
