@@ -1,12 +1,25 @@
 use crate::{num::Num, num::SignedNum};
+use std::fmt::Debug;
+use std::fmt::Display;
 use std::ops::*;
 
-#[derive(Debug, Copy, Clone, Eq)]
+#[derive(Copy, Clone, Eq)]
 pub struct Correct<T: Num>(pub T);
 
 impl<T: Num> Correct<T> {
     pub fn zero() -> Self {
         Self(T::zero())
+    }
+}
+
+impl<T: Num> Debug for Correct<T> {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        Debug::fmt(&self.0, f)
+    }
+}
+impl<T: Num> Display for Correct<T> {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        Display::fmt(&self.0, f)
     }
 }
 

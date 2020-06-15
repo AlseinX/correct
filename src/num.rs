@@ -1,7 +1,10 @@
+use std::fmt::{Debug, Display};
 use std::ops::*;
 
 pub trait Num:
-    Copy
+    Debug
+    + Display
+    + Copy
     + Send
     + Sync
     + Clone
